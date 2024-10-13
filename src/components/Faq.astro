@@ -1,0 +1,145 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const faqs = [
+  {
+    question: 'How do I scrap my car in Luton?',
+    answer:
+      "To scrap your car in Luton, simply contact us via phone or fill out our online form. We'll arrange a convenient time to collect your car and handle all necessary paperwork.",
+  },
+  {
+    question: 'What documents do I need to scrap my car?',
+    answer:
+      "You'll need to provide your car’s V5C logbook and a valid form of ID, such as a driving license or passport, to confirm ownership before scrapping your vehicle.",
+  },
+  {
+    question: 'Do I get paid for scrapping my car?',
+    answer:
+      "Yes, we offer competitive prices for scrapping your car. The amount you'll receive depends on factors like the make, model, and weight of your vehicle.",
+  },
+  {
+    question: 'Can you collect my car for free in Luton?',
+    answer:
+      "Yes, we provide free car collection services in Luton and the surrounding areas. We'll schedule a convenient time to pick up your car from your location.",
+  },
+  {
+    question: 'Will you handle the DVLA paperwork?',
+    answer:
+      'Yes, we take care of all the necessary paperwork, including notifying the DVLA that your car has been scrapped, so you don’t have to worry about it.',
+  },
+  {
+    question: "What happens to my car after it's scrapped?",
+    answer:
+      "Once scrapped, your car will be processed at an Authorised Treatment Facility (ATF) where it's dismantled, recycled, and disposed of in an environmentally friendly manner.",
+  },
+  {
+    question: "Can I scrap my car if it's not running?",
+    answer:
+      'Yes, we accept non-running cars for scrap. Whether your car is broken down, damaged, or simply no longer roadworthy, we’ll still collect it and pay you accordingly.',
+  },
+  {
+    question: 'Do you scrap cars with outstanding finance?',
+    answer:
+      'No, we cannot scrap cars that have outstanding finance. You must settle any remaining finance on the vehicle before scrapping it with us.',
+  },
+  {
+    question: 'How quickly can you collect my car in Luton?',
+    answer:
+      'We aim to collect cars within 24-48 hours of your inquiry, but same-day collection may be available depending on your location and schedule.',
+  },
+  {
+    question: 'Is there a charge for scrapping my car?',
+    answer:
+      'No, scrapping your car with us is free. We offer a no-obligation quote and free collection service, ensuring the process is hassle-free for you.',
+  },
+]
+---
+
+<section class='mx-auto max-w-7xl px-6 lg:px-8'>
+  <div class='lg:p-24 bg-primary rounded-lg space-y-5'>
+    {
+      faqs?.map(({ question, answer }, index) => (
+        <dl id='faq' class='bg-white rounded-lg space-y-6 divide-y p-3'>
+          <div>
+            <dt>
+              <button
+                id={`btn-${index}`}
+                data-faq={index}
+                type='button'
+                class='flex w-full items-start text-left text-black space-x-3 '
+                aria-controls={`answer-${index}`}
+                aria-expanded='false'
+              >
+                <span class='flex h-7 items-center'>
+                  <svg
+                    id={`close-${index}`}
+                    class='h-6 w-6'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke-width='1.5'
+                    stroke='currentColor'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M12 6v12m6-6H6'
+                    />
+                  </svg>
+                  <svg
+                    id={`open-${index}`}
+                    class='hidden h-6 w-6'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke-width='1.5'
+                    stroke='currentColor'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M18 12H6'
+                    />
+                  </svg>
+                </span>
+                <span class='text-base leading-7'>{question}</span>
+              </button>
+            </dt>
+            <dd class='mt-2 pl-10 hidden space-y-5' id={`answer-${index}`}>
+              return <p class='text-base leading-7'>{answer}</p>
+            </dd>
+          </div>
+        </dl>
+      ))
+    }
+  </div>
+  <a
+    role='button'
+    href={'#'}
+    class='group btn mt-10 w-full flex justify-between items-center'
+  >
+    <span>Check Policies and Guidelines</span>
+    <!-- <img
+      class='group-hover:animate-shake'
+      src={arrowRight.src}
+      alt={'right arrow'}
+    /> -->
+    <Icon name='arrow-right' />
+  </a>
+</section>
+
+<script>
+  const faqs = document.querySelectorAll('#faq')
+  faqs.forEach((event, index) => {
+    event.addEventListener('click', () => {
+      const closeIcon = document.getElementById(`close-${index}`),
+        answer = document.getElementById(`answer-${index}`),
+        openIcon = document.getElementById(`open-${index}`)
+      const btn = document.getElementById(`btn-${index}`)
+      btn?.toggleAttribute('aria-expanded')
+      openIcon?.classList.toggle('hidden')
+      closeIcon?.classList.toggle('hidden')
+      answer?.classList.toggle('hidden')
+    })
+  })
+</script>

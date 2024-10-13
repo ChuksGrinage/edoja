@@ -1,0 +1,66 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const howItWorksStep = [
+  {
+    title: 'Get a quote',
+    description:
+      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    icon: 'get-a-quote',
+  },
+
+  {
+    title: 'Schedule a pickup',
+    description:
+      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    icon: 'clock',
+  },
+  {
+    title: 'Get paid',
+    description:
+      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    icon: 'cash',
+  },
+] as const
+---
+
+<div class='bg-white py-24 sm:py-32'>
+  <div class='mx-auto max-w-7xl px-6 lg:px-8'>
+    <div class='mx-auto max-w-2xl lg:text-center'>
+      <h2 class='text-base font-semibold leading-7 text-indigo-600'>
+        Cash for your scrap car
+      </h2>
+      <p
+        class='mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'
+      >
+        Everything you need to deploy your app
+      </p>
+      <p class='mt-6 text-lg leading-8 text-gray-600'>
+        Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
+        Suspendisse eget egestas a elementum pulvinar et feugiat blandit at. In
+        mi viverra elit nunc.
+      </p>
+    </div>
+    <div class='mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl'>
+      <dl
+        class='grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16'
+      >
+        {
+          howItWorksStep.map((step) => (
+            <div class='relative pl-16'>
+              <dt class='text-base font-semibold leading-7 text-gray-900'>
+                <div class='absolute left-0 top-0 flex h-10 w-10 items-center  justify-center rounded-lg bg-[#f0c541]'>
+                  <Icon name={step.icon} />
+                </div>
+                {step.title}
+              </dt>
+              <dd class='mt-2 text-base leading-7 text-gray-600'>
+                {step.description}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</div>

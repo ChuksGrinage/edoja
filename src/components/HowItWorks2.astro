@@ -1,0 +1,129 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const howItWorksStep = [
+  {
+    title: 'Get a quote',
+    description:
+      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    icon: 'get-a-quote',
+  },
+
+  {
+    title: 'Schedule a pickup',
+    description:
+      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    icon: 'clock',
+  },
+  {
+    title: 'Get paid',
+    description:
+      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    icon: 'cash',
+  },
+] as const
+---
+
+<!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/aspect-ratio'),
+    ],
+  }
+  ```
+-->
+<div class='bg-gray-50'>
+  <div class='mx-auto max-w-7xl py-24 sm:px-2 sm:py-32 lg:px-4'>
+    <div class='mx-auto max-w-2xl px-4 lg:max-w-none'>
+      <div
+        class='grid grid-cols-1 items-center gap-x-16 gap-y-10 lg:grid-cols-2'
+      >
+        <div>
+          <h2 class='text-4xl font-bold tracking-tight text-gray-900'>
+            We built our business on great customer service
+          </h2>
+          <p class='mt-4 text-gray-500'>
+            At the beginning at least, but then we realized we could make a lot
+            more money if we kinda stopped caring about that. Our new strategy
+            is to write a bunch of things that look really good in the
+            headlines, then clarify in the small print but hope people don't
+            actually read it.
+          </p>
+        </div>
+        <div
+          class='aspect-h-2 aspect-w-3 overflow-hidden rounded-lg bg-gray-100'
+        >
+          <img
+            src='https://tailwindui.com/plus/img/ecommerce-images/incentives-07-hero.jpg'
+            alt=''
+            class='object-cover object-center'
+          />
+        </div>
+      </div>
+      <div class='mt-16 grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3'>
+        {
+          howItWorksStep.map((step) => (
+            <div class='sm:flex lg:block'>
+              <div class='relative pl-16'>
+                <dt class='text-base font-semibold leading-7 text-gray-900'>
+                  <div class='absolute left-0 top-0 flex h-10 w-10 items-center  justify-center rounded-lg bg-[#f0c541]'>
+                    <Icon name={step.icon} />
+                  </div>
+                  {step.title}
+                </dt>
+                <dd class='mt-2 text-base leading-7 text-gray-600'>
+                  {step.description}
+                </dd>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div class='bg-white'>
+  <div class='mx-auto max-w-7xl py-24 sm:px-2 sm:py-32 lg:px-4'>
+    <div class='mx-auto max-w-2xl px-4 lg:max-w-none'>
+      <div class='max-w-3xl'>
+        <h2 class='text-4xl font-bold tracking-tight text-gray-900'>
+          We built our business on customer service
+        </h2>
+        <p class='mt-4 text-gray-500'>
+          At the beginning at least, but then we realized we could make a lot
+          more money if we kinda stopped caring about that. Our new strategy is
+          to write a bunch of things that look really good in the headlines,
+          then clarify in the small print but hope people don't actually read
+          it.
+        </p>
+      </div>
+      <div class='mt-16 grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3'>
+        {
+          howItWorksStep.map((step) => (
+            <div class='sm:flex lg:block'>
+              <div class='relative pl-16'>
+                <dt class='text-base font-semibold leading-7 text-gray-900'>
+                  <div class='absolute left-0 top-0 flex h-10 w-10 items-center  justify-center rounded-lg bg-[#f0c541]'>
+                    <Icon icon={step.icon} />
+                  </div>
+                  {step.title}
+                </dt>
+                <dd class='mt-2 text-base leading-7 text-gray-600'>
+                  {step.description}
+                </dd>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div> -->
